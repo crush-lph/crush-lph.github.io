@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>爱意随风起，风止意难平</title>
+  <title>Document</title>
   <style>
     body {
       margin: 0;
@@ -17,16 +17,17 @@
       background: radial-gradient(circle at center, navy, black);
     }
 
-    .name {
+    .promise {
       /* align-self: flex-end; */
       margin-top: 50px;
       color: lightpink;
       transition: color 5s;
       animation: font-flash 3s infinite;
-      user-select:none;
+      transform: translate3d(0, 0, 0);
+      margin-bottom: 16px;
     }
 
-    .name span {
+    .promise span {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 20px;
       font-weight: 20pt;
@@ -53,7 +54,10 @@
       height: var(--h);
       top: var(--t);
       animation: beating 5s infinite;
+
+      /* transform: translate3d(0, 0, 0); */
     }
+
 
     .heart span:nth-child(1),
     .heart span:nth-child(9) {
@@ -133,6 +137,94 @@
         color: rgba(255, 215, 0, 0.5);
       }
     }
+
+    .container {
+      width: 600px;
+      max-width: 95%;
+      min-width: 330px;
+      margin: 20px auto;
+      border-radius: 5px;
+      border: 2px solid mediumpurple;
+      position: relative;
+    }
+
+    .minutes,
+    .seconds,
+    .milliseconds,
+    .hours {
+      height: 50px;
+      width: 70px;
+      min-width: 50px;
+      float: left;
+      margin: 5px;
+      position: relative;
+      border: 2px solid dodgerblue;
+      overflow: hidden;
+      border-radius: 5px;
+    }
+
+    .days {
+      width: 175px;
+      min-width: 125px;
+      height: 50px;
+      margin: 5px;
+      position: relative;
+      border: 2px solid dodgerblue;
+      overflow: hidden;
+      border-radius: 5px;
+    }
+
+    .clock-container {
+      display: flex;
+      justify-content: center;
+    }
+
+
+
+    .start {
+      border: 2px solid dodgerblue;
+      border-radius: 5px;
+      color: #fff;
+      transition: all 0.2s;
+      cursor: pointer;
+      display: block;
+      height: 40px;
+      line-height: 42px;
+      margin: 20px auto;
+      text-align: center;
+      width: 128px;
+    }
+
+    .start:hover {
+      background: dodgerblue;
+    }
+
+    .hour,
+    .minutes,
+    .seconds,
+    .day {
+      display: block;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      font-size: 35px;
+      color: #fff;
+      font-weight: bold;
+      /* margin-left:  */
+      letter-spacing: 3px;
+    }
+
+    .timer {
+      display: none;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #fff;
+      font-weight: bold;
+      margin-bottom: 20px;
+      /* letter-spacing: 5px; */
+    }
   </style>
 </head>
 
@@ -149,9 +241,102 @@
     <span></span>
     <!-- <span></span> -->
   </div>
-  <div class="name">
-    <span>爱意随风起,风止意难平</span>
+  <div class="promise">
+    <span>爱意东升日落，浪漫至死不渝</span>
   </div>
+  <div class="container">
+    <!-- <input class="start" type="checkbox" id="start">
+    <label for="start" class="start-label">START</label> -->
+    <div class="start">START</div>
+    <div class="timer">aaa</div>
+    <div class="clock-container">
+      <div class="days">
+        <span class="day">00000</span>
+      </div>
+      <div class="hours">
+        <span class="hour">00</span>
+      </div>
+      <div class="minutes">
+        <span class="minute">00</span>
+      </div>
+      <div class="seconds">
+        <span class="second">00</span>
+      </div>
+    </div>
+
+  </div>
+  <script>
+    const start = document.getElementsByClassName("start")[0]
+    const timer = document.getElementsByClassName('timer')[0]
+    const days = document.getElementsByClassName('day')[0]
+    const hours = document.getElementsByClassName('hour')[0]
+    const minutes = document.getElementsByClassName('minute')[0]
+    const seconds = document.getElementsByClassName('second')[0]
+    // start.onmouseenter = () => {
+    //   console.log('isclick');
+    // }
+    let isStart = false
+    var milliseconds
+    if (!isStart) {
+      start.addEventListener('click', function handler() {
+        let date = new Date()
+        isStart = true
+        start.style.width = 280 + 'px'
+        const year = date.getFullYear()
+        const month = date.getMonth() + 1
+        const day = date.getDate()
+        const hour = date.getHours()
+        const minute = date.getMinutes()
+        const second = date.getSeconds()
+        milliseconds = Date.now()
+        start.innerHTML = year + '年' + month + '月' + day + '日' + hour + '时' + minute + '分' + second + '秒'
+        start.removeEventListener('click', handler)
+        console.log(milliseconds);
+        timer.style.display = 'block'
+        timer.innerHTML = 'timestamp:' + milliseconds
+      })
+    }
+    function theWindRises() {
+      if (isStart) {
+        let unix_now = Date.now()
+        let forever = (unix_now - milliseconds) / 1000
+        // 86,400
+        let day_now = Math.floor(forever / 86400)
+        let hour_now = Math.floor(forever % 86400 / 3600)
+        let minute_now = Math.floor(forever % 3600 / 60)
+        let second_now = Math.floor(forever % 60)
+
+        // console.log(day_now, hour_now, minute_now, second_now);
+
+        if (second_now < 10) {
+          second_now = '0' + second_now
+        }
+        seconds.innerHTML = second_now
+
+        if (minute_now < 10) {
+          minute_now = '0' + minute_now
+        }
+        minutes.innerHTML = minute_now
+        if (hour_now < 10) {
+          hour_now = '0' + hour_now
+        }
+        hours.innerHTML = hour_now
+
+        if (day_now < 10) {
+          day_now = '0000' + day_now
+        } else if (day_now < 100) {
+          day_now = '000' + day_now
+        } else if (day_now < 1000) {
+          day_now = '00' + day_now
+        } else if (day_now < 10000) {
+          day_now = '0' + day_now
+        }
+        days.innerHTML = day_now
+      }
+    }
+    setInterval(theWindRises, 1000)
+
+  </script>
 </body>
 
 </html>
