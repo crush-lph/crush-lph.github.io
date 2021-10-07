@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_2849122_zvv74s7xhj.css">
   <title>The Wind Rises</title>
   <style>
     body {
@@ -225,6 +226,10 @@
       margin-bottom: 20px;
       /* letter-spacing: 5px; */
     }
+
+    .icon-aixin {
+      font-size: 20px;
+    }
   </style>
 </head>
 
@@ -242,7 +247,7 @@
     <!-- <span></span> -->
   </div>
   <div class="promise">
-    <span>爱意东升西落，浪漫至死不渝</span>
+    <span>爱意东升日落，浪漫至死不渝</span>
   </div>
   <div class="container">
     <!-- <input class="start" type="checkbox" id="start">
@@ -275,27 +280,29 @@
     // start.onmouseenter = () => {
     //   console.log('isclick');
     // }
-    let isStart = false
+    // let isStart = false
+    let isStart = true
     var milliseconds
-    if (!isStart) {
-      start.addEventListener('click', function handler() {
-        let date = new Date()
-        isStart = true
-        start.style.width = 280 + 'px'
-        const year = date.getFullYear()
-        const month = date.getMonth() + 1
-        const day = date.getDate()
-        const hour = date.getHours()
-        const minute = date.getMinutes()
-        const second = date.getSeconds()
-        milliseconds = Date.now()
-        start.innerHTML = year + '年' + month + '月' + day + '日' + hour + '时' + minute + '分' + second + '秒'
-        start.removeEventListener('click', handler)
-        console.log(milliseconds);
-        timer.style.display = 'block'
-        timer.innerHTML = 'timestamp:' + milliseconds
-      })
-    }
+    let date = new Date()
+    isStart = true
+    start.style.width = 280 + 'px'
+    const year = 2021
+    const month = 10
+    const day = 7
+    const hour = 14
+    const minute = 40
+    const second = 39
+    milliseconds = 1633588839185
+    start.innerHTML = year + '年' + month + '月' + day + '日' + hour + '时' + minute + '分' + second + '秒'
+    // if (!isStart) {
+    //   start.addEventListener('click', function handler() {
+
+    //     start.removeEventListener('click', handler)
+    //     console.log(milliseconds);
+    //     timer.style.display = 'block'
+    //     timer.innerHTML = 'timestamp:' + milliseconds
+    //   })
+    // }
     function theWindRises() {
       if (isStart) {
         let unix_now = Date.now()
@@ -335,6 +342,8 @@
       }
     }
     setInterval(theWindRises, 1000)
+
   </script>
 </body>
+
 </html>
