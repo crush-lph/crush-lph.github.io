@@ -1,349 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="HWJ & LPH" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="//at.alicdn.com/t/font_2849122_zvv74s7xhj.css">
-  <title>The Wind Rises</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at center, navy, black);
-    }
+    <link
+      rel="stylesheet"
+      href="//at.alicdn.com/t/font_2849122_zvv74s7xhj.css"
+    />
+    <!-- /* CDN
+    服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。
+    */ @font-face { font-family: "仓耳渔阳体 W05";font-weight: 400;src:
+    url("//at.alicdn.com/wf/webfont/2sGc8JEL02YW/IoL0z8I41h1DM4fx-Gnbk.woff2")
+    format("woff2"),
+    url("//at.alicdn.com/wf/webfont/2sGc8JEL02YW/mZHngf-IXZJTP5LVpCv-Y.woff")
+    format("woff"); font-display: swap; } -->
+    <title>The Wind Rises</title>
 
-    .promise {
-      /* align-self: flex-end; */
-      margin-top: 50px;
-      color: lightpink;
-      transition: color 5s;
-      animation: font-flash 3s infinite;
-      transform: translate3d(0, 0, 0);
-      margin-bottom: 16px;
-    }
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle at center, #cceeff, #ccccff);
+        font-family: "Courier New", Courier, monospace;
+      }
+      * {
+        user-select: none;
+      }
 
-    .promise span {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 20px;
-      font-weight: 20pt;
-      letter-spacing: 4px
-    }
+      .promise {
+        /* align-self: flex-end; */
+        margin-top: 50px;
+        color: lightpink;
+        transition: color 5s;
+        animation: font-flash 3s infinite;
+        transform: translate3d(0, 0, 0);
+        margin-bottom: 16px;
+      }
 
-    .heart {
-      width: 14em;
-      height: 11em;
-      /* border: 1px dashed white; */
-      font-size: 20px;
-      display: flex;
-      justify-content: space-between;
-    }
+      .promise span {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        font-weight: 20pt;
+        letter-spacing: 4px;
+      }
 
-    .heart span {
-      --c: lightblue;
-      --h: 50%;
-      --t: 25%;
-      width: 1em;
-      background-color: var(--c);
-      border-radius: 0.5em;
-      position: relative;
-      height: var(--h);
-      top: var(--t);
-      animation: beating 5s infinite;
+      .heart {
+        width: 14em;
+        height: 11em;
+        /* border: 1px dashed white; */
+        font-size: 20px;
+        display: flex;
+        justify-content: space-between;
+      }
 
-      /* transform: translate3d(0, 0, 0); */
-    }
-
-
-    .heart span:nth-child(1),
-    .heart span:nth-child(9) {
-      --c: orangered;
-      --h: 3em;
-      --t: 2.2em;
-    }
-
-    .heart span:nth-child(2),
-    .heart span:nth-child(8) {
-      --c: gold;
-      --h: 6em;
-      --t: 0.6em;
-    }
-
-    .heart span:nth-child(3),
-    .heart span:nth-child(7) {
-      --c: lightgreen;
-      --h: 9em;
-      --t: 0;
-    }
-
-    .heart span:nth-child(4),
-    .heart span:nth-child(6) {
-      --c: dodgerblue;
-      --h: 9em;
-      --t: 0.8em;
-    }
-
-    .heart span:nth-child(5) {
-      --c: mediumpurple;
-      --h: 9.4em;
-      --t: 1.6em;
-    }
-
-    @keyframes beating {
-
-      0%,
-      30% {
+      .heart span {
+        --c: lightblue;
+        --h: 50%;
+        --t: 25%;
+        width: 1em;
+        background-color: var(--c);
+        border-radius: 0.5em;
+        position: relative;
         height: var(--h);
         top: var(--t);
-        background-color: var(--c);
-        filter: blur(0);
-        width: 1em;
+        animation: beating 5s infinite;
+
+        /* transform: translate3d(0, 0, 0); */
       }
 
-      60%,
-      70% {
-        height: 50%;
-        top: 25%;
-        background-color: lightblue;
-        filter: blur(5px);
-        width: 0.1em;
-      }
-    }
-
-    @keyframes font-flash {
-
-      0%,
-      30% {
-        color: lightblue;
-        /* color: rgba(255,182,193,1); */
+      .heart span:nth-child(1),
+      .heart span:nth-child(9) {
+        --c: #cccccc;
+        --h: 3em;
+        --t: 2.2em;
       }
 
-      40%,
-      50% {
-        color: rgba(255, 182, 193, 1);
+      .heart span:nth-child(2),
+      .heart span:nth-child(8) {
+        --c: #f3c1da;
+        --h: 6em;
+        --t: 0.6em;
       }
 
-      60%,
-      70% {
-        color: rgba(255, 182, 193, 0.5);
+      .heart span:nth-child(3),
+      .heart span:nth-child(7) {
+        --c: #ffffcc;
+        --h: 9em;
+        --t: 0;
       }
 
-      80%,
-      90% {
-        color: rgba(255, 215, 0, 0.5);
+      .heart span:nth-child(4),
+      .heart span:nth-child(6) {
+        --c: #ccffff;
+        --h: 9em;
+        --t: 0.8em;
       }
-    }
 
-    .container {
-      width: 600px;
-      max-width: 95%;
-      min-width: 330px;
-      margin: 20px auto;
-      border-radius: 5px;
-      border: 2px solid mediumpurple;
-      position: relative;
-    }
+      .heart span:nth-child(5) {
+        --c: #9966cc;
+        --h: 9.4em;
+        --t: 1.6em;
+      }
 
-    .minutes,
-    .seconds,
-    .milliseconds,
-    .hours {
-      height: 50px;
-      width: 70px;
-      min-width: 50px;
-      float: left;
-      margin: 5px;
-      position: relative;
-      border: 2px solid dodgerblue;
-      overflow: hidden;
-      border-radius: 5px;
-    }
+      @keyframes beating {
+        0%,
+        30% {
+          height: var(--h);
+          top: var(--t);
+          background-color: var(--c);
+          filter: blur(0);
+          width: 1em;
+        }
 
-    .days {
-      width: 175px;
-      min-width: 125px;
-      height: 50px;
-      margin: 5px;
-      position: relative;
-      border: 2px solid dodgerblue;
-      overflow: hidden;
-      border-radius: 5px;
-    }
+        60%,
+        70% {
+          height: 50%;
+          top: 25%;
+          background-color: lightblue;
+          filter: blur(5px);
+          width: 0.1em;
+        }
+      }
 
-    .clock-container {
-      display: flex;
-      justify-content: center;
-    }
+      @keyframes font-flash {
+        0%,
+        30% {
+          color: lightblue;
+          /* color: rgba(255,182,193,1); */
+        }
 
+        40%,
+        50% {
+          color: rgba(255, 182, 193, 1);
+        }
 
+        60%,
+        70% {
+          color: rgba(255, 182, 193, 0.5);
+        }
 
-    .start {
-      border: 2px solid dodgerblue;
-      border-radius: 5px;
-      color: #fff;
-      transition: all 0.2s;
-      cursor: pointer;
-      display: block;
-      height: 40px;
-      line-height: 42px;
-      margin: 20px auto;
-      text-align: center;
-      width: 128px;
-    }
+        80%,
+        90% {
+          color: rgba(255, 215, 0, 0.5);
+        }
+      }
 
-    .start:hover {
-      background: dodgerblue;
-    }
+      .container {
+        color: pink;
+        width: 600px;
+        max-width: 95%;
+        min-width: 330px;
+        margin: 20px auto;
+        border-radius: 5px;
+        /* border: 2px solid mediumpurple; */
+        box-shadow: 3px 3px 10px black;
+        position: relative;
+      }
 
-    .hour,
-    .minutes,
-    .seconds,
-    .day {
-      display: block;
-      height: 50px;
-      line-height: 50px;
-      text-align: center;
-      font-size: 35px;
-      color: #fff;
-      font-weight: bold;
-      /* margin-left:  */
-      letter-spacing: 3px;
-    }
+      .minutes,
+      .seconds,
+      .milliseconds,
+      .hours {
+        height: 50px;
+        width: 70px;
+        min-width: 50px;
+        float: left;
+        margin: 5px;
+        position: relative;
+        /* border: 2px solid #ffcccc; */
+        box-shadow: 1px 1px 5px black;
 
-    .timer {
-      display: none;
-      height: 20px;
-      line-height: 20px;
-      text-align: center;
-      font-size: 12px;
-      color: #fff;
-      font-weight: bold;
-      margin-bottom: 20px;
-      /* letter-spacing: 5px; */
-    }
+        overflow: hidden;
+        border-radius: 5px;
+      }
 
-    .icon-aixin {
-      font-size: 20px;
-    }
-  </style>
-</head>
+      .days {
+        width: 175px;
+        min-width: 125px;
+        height: 50px;
+        margin: 5px;
+        position: relative;
+        /* border: 2px solid dodgerblue; */
+        box-shadow: 1px 1px 5px black;
 
-<body>
-  <div class="heart">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <!-- <span></span> -->
-  </div>
-  <div class="promise">
-    <span>爱意东升日落，浪漫至死不渝</span>
-  </div>
-  <div class="container">
-    <!-- <input class="start" type="checkbox" id="start">
+        overflow: hidden;
+        border-radius: 5px;
+      }
+
+      .clock-container {
+        padding-bottom: 8px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .start {
+        /* border: 2px solid dodgerblue; */
+        box-shadow: 2px 2px 8px black;
+
+        border-radius: 5px;
+        color: #fff;
+        transition: all 0.2s;
+        cursor: pointer;
+        display: block;
+        height: 40px;
+        line-height: 42px;
+        margin: 20px auto;
+        text-align: center;
+        width: 128px;
+      }
+
+      .start:hover {
+        /* background: pink; */
+      }
+
+      .hour,
+      .minutes,
+      .seconds,
+      .day {
+        display: block;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 35px;
+        color: #fff;
+        font-weight: bold;
+        /* margin-left:  */
+        letter-spacing: 3px;
+      }
+
+      .timer {
+        display: none;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        font-size: 12px;
+        color: #fff;
+        font-weight: bold;
+        margin-bottom: 20px;
+        /* letter-spacing: 5px; */
+      }
+
+      .icon-aixin {
+        font-size: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="heart">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <!-- <span></span> -->
+    </div>
+    <div class="promise">
+      <span>爱意东升日落，浪漫至死不渝</span>
+    </div>
+    <div class="container">
+      <!-- <input class="start" type="checkbox" id="start">
     <label for="start" class="start-label">START</label> -->
-    <div class="start">START</div>
-    <div class="timer">aaa</div>
-    <div class="clock-container">
-      <div class="days">
-        <span class="day">00000</span>
-      </div>
-      <div class="hours">
-        <span class="hour">00</span>
-      </div>
-      <div class="minutes">
-        <span class="minute">00</span>
-      </div>
-      <div class="seconds">
-        <span class="second">00</span>
+      <div class="start">START</div>
+      <div class="timer">aaa</div>
+      <div class="clock-container">
+        <div class="days">
+          <span class="day">00000</span>
+        </div>
+        <div class="hours">
+          <span class="hour">00</span>
+        </div>
+        <div class="minutes">
+          <span class="minute">00</span>
+        </div>
+        <div class="seconds">
+          <span class="second">00</span>
+        </div>
       </div>
     </div>
+    <script>
+      const start = document.getElementsByClassName("start")[0];
+      const timer = document.getElementsByClassName("timer")[0];
+      const days = document.getElementsByClassName("day")[0];
+      const hours = document.getElementsByClassName("hour")[0];
+      const minutes = document.getElementsByClassName("minute")[0];
+      const seconds = document.getElementsByClassName("second")[0];
+      // start.onmouseenter = () => {
+      //   console.log('isclick');
+      // }
+      // let isStart = false
+      let isStart = true;
+      var milliseconds;
+      let date = new Date();
+      isStart = true;
+      start.style.width = 280 + "px";
+      const year = 2021;
+      const month = 10;
+      const day = 7;
+      const hour = 14;
+      const minute = 40;
+      const second = 39;
+      milliseconds = 1633588839185;
+      start.innerHTML =
+        year +
+        "年" +
+        month +
+        "月" +
+        day +
+        "日" +
+        hour +
+        "时" +
+        minute +
+        "分" +
+        second +
+        "秒";
+      // if (!isStart) {
+      //   start.addEventListener('click', function handler() {
 
-  </div>
-  <script>
-    const start = document.getElementsByClassName("start")[0]
-    const timer = document.getElementsByClassName('timer')[0]
-    const days = document.getElementsByClassName('day')[0]
-    const hours = document.getElementsByClassName('hour')[0]
-    const minutes = document.getElementsByClassName('minute')[0]
-    const seconds = document.getElementsByClassName('second')[0]
-    // start.onmouseenter = () => {
-    //   console.log('isclick');
-    // }
-    // let isStart = false
-    let isStart = true
-    var milliseconds
-    let date = new Date()
-    isStart = true
-    start.style.width = 280 + 'px'
-    const year = 2021
-    const month = 10
-    const day = 7
-    const hour = 14
-    const minute = 40
-    const second = 39
-    milliseconds = 1633588839185
-    start.innerHTML = year + '年' + month + '月' + day + '日' + hour + '时' + minute + '分' + second + '秒'
-    // if (!isStart) {
-    //   start.addEventListener('click', function handler() {
+      //     start.removeEventListener('click', handler)
+      //     console.log(milliseconds);
+      //     timer.style.display = 'block'
+      //     timer.innerHTML = 'timestamp:' + milliseconds
+      //   })
+      // }
+      function theWindRises() {
+        if (isStart) {
+          let unix_now = Date.now();
+          let forever = (unix_now - milliseconds) / 1000;
+          // 86,400
+          let day_now = Math.floor(forever / 86400);
+          let hour_now = Math.floor((forever % 86400) / 3600);
+          let minute_now = Math.floor((forever % 3600) / 60);
+          let second_now = Math.floor(forever % 60);
 
-    //     start.removeEventListener('click', handler)
-    //     console.log(milliseconds);
-    //     timer.style.display = 'block'
-    //     timer.innerHTML = 'timestamp:' + milliseconds
-    //   })
-    // }
-    function theWindRises() {
-      if (isStart) {
-        let unix_now = Date.now()
-        let forever = (unix_now - milliseconds) / 1000
-        // 86,400
-        let day_now = Math.floor(forever / 86400)
-        let hour_now = Math.floor(forever % 86400 / 3600)
-        let minute_now = Math.floor(forever % 3600 / 60)
-        let second_now = Math.floor(forever % 60)
+          // console.log(day_now, hour_now, minute_now, second_now);
 
-        // console.log(day_now, hour_now, minute_now, second_now);
+          if (second_now < 10) {
+            second_now = "0" + second_now;
+          }
+          seconds.innerHTML = second_now;
 
-        if (second_now < 10) {
-          second_now = '0' + second_now
+          if (minute_now < 10) {
+            minute_now = "0" + minute_now;
+          }
+          minutes.innerHTML = minute_now;
+          if (hour_now < 10) {
+            hour_now = "0" + hour_now;
+          }
+          hours.innerHTML = hour_now;
+
+          if (day_now < 10) {
+            day_now = "0000" + day_now;
+          } else if (day_now < 100) {
+            day_now = "000" + day_now;
+          } else if (day_now < 1000) {
+            day_now = "00" + day_now;
+          } else if (day_now < 10000) {
+            day_now = "0" + day_now;
+          }
+          days.innerHTML = day_now;
         }
-        seconds.innerHTML = second_now
-
-        if (minute_now < 10) {
-          minute_now = '0' + minute_now
-        }
-        minutes.innerHTML = minute_now
-        if (hour_now < 10) {
-          hour_now = '0' + hour_now
-        }
-        hours.innerHTML = hour_now
-
-        if (day_now < 10) {
-          day_now = '0000' + day_now
-        } else if (day_now < 100) {
-          day_now = '000' + day_now
-        } else if (day_now < 1000) {
-          day_now = '00' + day_now
-        } else if (day_now < 10000) {
-          day_now = '0' + day_now
-        }
-        days.innerHTML = day_now
       }
-    }
-    setInterval(theWindRises, 1000)
-
-  </script>
-</body>
-
+      setInterval(theWindRises, 1000);
+    </script>
+  </body>
 </html>
